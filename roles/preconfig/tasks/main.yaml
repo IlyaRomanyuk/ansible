@@ -12,7 +12,7 @@
             - apt-transport-https
             - ca-certificates
             - curl
-            - gnupg
+            - gnupg                                                       
             - lsb-release
             - python3-pip
           update-cache: true
