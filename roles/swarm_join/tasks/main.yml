@@ -1,0 +1,15 @@
+---
+- name: Подключение
+  debug:
+    msg: "{{ hostvars['server1']['ansible_facts'] }}"
+
+- name: Подключение
+  community.docker.docker_swarm:
+    state: join
+    remote_addrs: "{{ advertise_addr }}"
+    join_token: >
+      {{
+        hostvars['server1']['ansible_facts']['token_worker']
+        if type == 'worker' else
+        hostvars['server1']['ansible_facts']['token_manager']
+      }}
